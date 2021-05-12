@@ -1,3 +1,4 @@
+import 'package:anime_sorcerer/app/app.dart';
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,6 +35,7 @@ class LoginView extends StatelessWidget {
     var authRepository =
         RepositoryProvider.of<AuthenticationRepository>(context);
     var loginBloc = BlocProvider.of<LoginBloc>(context);
+    var pageCubit = BlocProvider.of<PageFlowCubit>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Anime Sorcerer'),
@@ -56,14 +58,25 @@ class LoginView extends StatelessWidget {
               },
             );
           case AuthenticationStatus.authenticated:
-            return Center(
-              child: Text('YAAAASSSS ${authRepository.accessToken}'),
+            return Column(
+              children: [
+                Center(
+                  child: Text('YAAAASSSS ${authRepository.accessToken}'),
+                ),
+                ElevatedButton(
+                    onPressed: () => pageCubit.updateFlow('/'),
+                    child: const Text('Logged in, go back home'))
+              ],
             );
           default:
-            return Center(
-                child: ElevatedButton(
-                    onPressed: () => loginBloc.add(LoginLoginRequested()),
-                    child: const Text('Login with MyAnimeList')));
+            return Column(
+              children: [
+                Center(
+                    child: ElevatedButton(
+                        onPressed: () => loginBloc.add(LoginLoginRequested()),
+                        child: const Text('Login with MyAnimeList'))),
+              ],
+            );
         }
       }),
     );

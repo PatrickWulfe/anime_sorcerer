@@ -10,8 +10,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:user_repository/user_repository.dart';
-import '../l10n/l10n.dart';
-import '../login/login.dart';
+import 'app.dart';
+
+export '../l10n/l10n.dart';
+export '../login/login.dart';
+export 'page_flow/page_flow.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -39,7 +42,7 @@ class App extends StatelessWidget {
           GlobalMaterialLocalizations.delegate,
         ],
         supportedLocales: AppLocalizations.supportedLocales,
-        home: const LoginPage(),
+        home: PageFlow(),
       ),
     );
   }
