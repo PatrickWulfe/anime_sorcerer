@@ -5,8 +5,6 @@ import 'package:user_repository/user_repository.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import '../../login/login.dart';
 
-part 'login_view.dart';
-
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
 
