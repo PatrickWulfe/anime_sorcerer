@@ -1,5 +1,4 @@
 import 'package:anime_sorcerer/home/home.dart';
-import 'package:anime_sorcerer/login/login.dart';
 import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,7 +14,7 @@ List<Page> onGenerateAppPages(String page, List<Page> pages) {
     ];
   }
   return [
-    LoginPage.page(),
+    //LoginPage.page(),
   ];
 }
 

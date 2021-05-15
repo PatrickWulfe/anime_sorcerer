@@ -5,6 +5,8 @@ import 'package:http/http.dart' as http;
 import 'package:oauth2_client/access_token_response.dart';
 import 'package:oauth2_client/oauth2_client.dart';
 
+import '../myanimelist_api_client.dart';
+
 class MALOAuth2Client extends OAuth2Client {
   MALOAuth2Client()
       : super(
@@ -64,6 +66,7 @@ class MALOAuth2Client extends OAuth2Client {
   }
 
   /// Requests and Access Token using the provided Authorization [code].
+  @override
   Future<AccessTokenResponse> requestAccessToken(
       {required String code,
       required String clientId,
@@ -83,7 +86,6 @@ class MALOAuth2Client extends OAuth2Client {
         clientId: clientId,
         clientSecret: clientSecret,
         params: params,
-        //headers: _accessTokenRequestHeaders,
         httpClient: httpClient);
 
     return http2TokenResponse(response, requestedScopes: scopes);
@@ -98,7 +100,6 @@ class MALOAuth2Client extends OAuth2Client {
     var response = await _performAuthorizedRequest(
         url: _getRefreshUrl(),
         clientId: clientId,
-        clientSecret: clientSecret,
         params: params,
         httpClient: httpClient);
 
@@ -115,21 +116,17 @@ class MALOAuth2Client extends OAuth2Client {
       String? state,
       String? codeChallenge,
       Map<String, dynamic>? customParams}) {
-    return 'https://myanimelist.net/v1/oauth2/authorize' +
-        '?response_type=code&client_id=5c943b5a50e820deb39eb8f9d873e8b6' +
-        '&redirect_uri=wulfep.animesorcerer://oauth2&code_challenge=$codeChallenge' +
-        '&state=$state';
+    return '$malAuthorizationEndpoint?response_type=code&client_id=$clientId' +
+        '&redirect_uri=$redirectUri&code_challenge=$codeChallenge&state=$state';
   }
 
   /// Performs a post request to the specified [url],
   /// adding authentication credentials as described here: https://tools.ietf.org/html/rfc6749#section-2.3
-  @override
   Future<http.Response> _performAuthorizedRequest(
       {required String url,
       required String clientId,
       String? clientSecret,
       Map? params,
-      Map<String, String>? headers,
       httpClient}) async {
     httpClient ??= http.Client();
 
