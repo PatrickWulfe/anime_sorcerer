@@ -163,7 +163,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-<<<<<<< HEAD
   flutter_web_auth:
     dependency: transitive
     description:
@@ -171,13 +170,11 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.0"
-=======
   flutter_web_plugins:
     dependency: transitive
     description: flutter
     source: sdk
     version: "0.0.0"
->>>>>>> c9458bcf256a1e204fc5b0db242026914643e8b0
   glob:
     dependency: transitive
     description:
@@ -283,14 +280,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.4.13"
-<<<<<<< HEAD
-  oauth2:
-    dependency: transitive
-    description:
-      name: oauth2
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
   oauth2_client:
     dependency: transitive
     description:
@@ -298,8 +287,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
-=======
->>>>>>> c9458bcf256a1e204fc5b0db242026914643e8b0
   package_config:
     dependency: transitive
     description:
@@ -552,8 +539,4 @@ packages:
     version: "3.1.0"
 sdks:
   dart: ">=2.12.0 <3.0.0"
-<<<<<<< HEAD
   flutter: ">=2.0.0"
-=======
-  flutter: ">=1.20.0"
->>>>>>> c9458bcf256a1e204fc5b0db242026914643e8b0

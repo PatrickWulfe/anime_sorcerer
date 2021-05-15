@@ -3,7 +3,6 @@ import 'package:mal_auth_repository/mal_auth_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_repository/user_repository.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 import '../../login/login.dart';
 
 class LoginPage extends StatelessWidget {
@@ -18,7 +17,7 @@ class LoginPage extends StatelessWidget {
         BlocProvider<LoginBloc>(create: (_) {
           return LoginBloc(
               authenticationRepository:
-                  RepositoryProvider.of<AuthenticationRepository>(context),
+                  RepositoryProvider.of<MALAuthRepository>(context),
               userRepository: RepositoryProvider.of<UserRepository>(context));
         }),
       ],
@@ -41,20 +40,20 @@ class LoginView extends StatelessWidget {
       body: BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
         switch (state.status) {
           case AuthenticationStatus.gotAuthUrl:
-            return WebView(
-              javascriptMode: JavascriptMode.unrestricted,
-              initialUrl: state.infoString,
-              navigationDelegate: (navReq) {
-                /* if (navReq.url.startsWith(redirectUrl.toString())) {
+          //return WebView(
+          //javascriptMode: JavascriptMode.unrestricted,
+          //initialUrl: state.infoString,
+          //navigationDelegate: (navReq) {
+          /* if (navReq.url.startsWith(redirectUrl.toString())) {
                   var responseUrl = Uri.parse(navReq.url);
                   loginBloc.add(AuthResponseReceived(
                     parameters: responseUrl.queryParameters,
                   ));
                   return NavigationDecision.prevent;
                 } */
-                return NavigationDecision.navigate;
-              },
-            );
+          //return NavigationDecision.navigate;
+          //},
+          //);
           case AuthenticationStatus.authenticated:
             return Column(
               children: [

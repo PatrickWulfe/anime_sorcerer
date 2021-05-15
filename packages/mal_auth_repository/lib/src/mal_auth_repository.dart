@@ -13,12 +13,12 @@ enum AuthenticationStatus {
   gotAuthUrl,
 }
 
-class AuthenticationRepository {
-  AuthenticationRepository() {
+class MALAuthRepository {
+  MALAuthRepository() {
     _oAuth2Helper = OAuth2Helper(
       _oAuth2Client,
       grantType: OAuth2Helper.AUTHORIZATION_CODE,
-      clientId: hiddenClientId,
+      clientId: '5c943b5a50e820deb39eb8f9d873e8b6',
     );
 
     _initAccessToken();
@@ -29,8 +29,8 @@ class AuthenticationRepository {
   final _oAuth2Client = OAuth2Client(
     authorizeUrl: 'https://myanimelist.net/v1/oauth2/authorize',
     tokenUrl: 'https://myanimelist.net/v1/oauth2/token',
-    redirectUri: 'wulfep.animeSorcerer://oauth2',
-    customUriScheme: 'wulfep.animeSorcerer',
+    redirectUri: 'wulfep.animesorcerer://oauth2',
+    customUriScheme: 'wulfep.animesorcerer',
     //credentialsLocation: CredentialsLocation.BODY,
   );
   late final OAuth2Helper _oAuth2Helper;
@@ -44,7 +44,7 @@ class AuthenticationRepository {
 
   Future<void> _initAccessToken() async {
     _accessToken = await _oAuth2Client.getTokenWithAuthCodeFlow(
-      clientId: hiddenClientId,
+      clientId: '5c943b5a50e820deb39eb8f9d873e8b6',
     );
   }
 }

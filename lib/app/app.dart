@@ -23,8 +23,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
       providers: [
-        RepositoryProvider<AuthenticationRepository>(
-          create: (_) => AuthenticationRepository(),
+        RepositoryProvider<MALAuthRepository>(
+          create: (_) => MALAuthRepository(),
         ),
         RepositoryProvider<UserRepository>(create: (_) => UserRepository()),
       ],

@@ -11,7 +11,7 @@ part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc({
-    required AuthenticationRepository authenticationRepository,
+    required MALAuthRepository authenticationRepository,
     required UserRepository userRepository,
   })   : _authenticationRepository = authenticationRepository,
         _userRepository = userRepository,
@@ -20,7 +20,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         .listen((status) => add(LoginStatusChanged(status: status)));
   }
 
-  final AuthenticationRepository _authenticationRepository;
+  final MALAuthRepository _authenticationRepository;
   final UserRepository _userRepository;
   late StreamSubscription<AuthenticationStatus>
       _authenticationStatusSubscription;
