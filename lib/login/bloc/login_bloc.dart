@@ -1,7 +1,6 @@
 import 'dart:async';
 
-import 'package:anime_sorcerer/app/app.dart';
-import 'package:authentication_repository/authentication_repository.dart';
+import 'package:mal_auth_repository/mal_auth_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,19 +32,19 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     if (event is LoginStatusChanged) {
       yield await _mapLoginStatusChangedToState(event);
     } else if (event is LoginLoginRequested) {
-      var authUrl = await _authenticationRepository.getAuthUrl();
-      yield LoginState.webViewDisplayed(authUrl.toString());
+      //yield LoginState.webViewDisplayed(
+      //_authenticationRepository.authorizationUrl.toString());
     } else if (event is AuthResponseReceived) {
-      await _authenticationRepository.createClient(event.parameters);
+      //await _authenticationRepository.createClient(event.parameters);
     } else if (event is LoginLogoutRequested) {
-      _authenticationRepository.logOut();
+      //_authenticationRepository.logOut();
     }
   }
 
   @override
   Future<void> close() {
     _authenticationStatusSubscription.cancel();
-    _authenticationRepository.dispose();
+    //_authenticationRepository.dispose();
     return super.close();
   }
 
@@ -56,8 +55,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       case AuthenticationStatus.unauthenticated:
         return const LoginState.unauthenticated();
       case AuthenticationStatus.gotAuthUrl:
-        return LoginState.webViewDisplayed(
-            _authenticationRepository.getAuthUrl().toString());
+      //return LoginState.webViewDisplayed(
+      //_authenticationRepository.authorizationUrl.toString());
       case AuthenticationStatus.authenticated:
         final user = await _tryGetUser();
         return user != null
@@ -77,31 +76,3 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     }
   }
 }
-
-/* class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc({required this.authenticationRepository}) : super(LoginLoggedOut());
-
-  final AuthenticationRepository authenticationRepository;
-  @override
-  Stream<LoginState> mapEventToState(
-    LoginEvent event,
-  ) async* {
-    if (event is LoginInit) {
-      var tmp = authenticationRepository.getLoginUrl();
-      await _openWebAuth();
-      print('test');
-      yield LoginHtmlDisplayed(
-          loginRequest: authenticationRepository.getLoginUrl());
-    } else if (event is UserLogoutSuccess) {
-      yield LoginLoggedOut();
-    }
-  }
-
-  Future<void> _openWebAuth() async {
-    final result = await FlutterWebAuth.authenticate(
-      url: authenticationRepository.getLoginUrl(),
-      callbackUrlScheme: authenticationRepository.callBackUrlScheme,
-    );
-    final code = Uri.parse(result).queryParameters['code'];
-  }
-} */

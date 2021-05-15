@@ -20,10 +20,10 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: ElevatedButton(
-        child: const Text('Go to Login Page'),
         onPressed: () {
           BlocProvider.of<PageFlowCubit>(context).updateFlow('/login');
         },
+        child: const Text('Go to Login Page'),
       ),
     );
   }

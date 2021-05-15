@@ -1,5 +1,5 @@
 import 'package:anime_sorcerer/app/app.dart';
-import 'package:authentication_repository/authentication_repository.dart';
+import 'package:mal_auth_repository/mal_auth_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_repository/user_repository.dart';
@@ -32,8 +32,6 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var authRepository =
-        RepositoryProvider.of<AuthenticationRepository>(context);
     var loginBloc = BlocProvider.of<LoginBloc>(context);
     var pageCubit = BlocProvider.of<PageFlowCubit>(context);
     return Scaffold(
@@ -47,21 +45,21 @@ class LoginView extends StatelessWidget {
               javascriptMode: JavascriptMode.unrestricted,
               initialUrl: state.infoString,
               navigationDelegate: (navReq) {
-                if (navReq.url.startsWith(redirectUrl.toString())) {
+                /* if (navReq.url.startsWith(redirectUrl.toString())) {
                   var responseUrl = Uri.parse(navReq.url);
                   loginBloc.add(AuthResponseReceived(
                     parameters: responseUrl.queryParameters,
                   ));
                   return NavigationDecision.prevent;
-                }
+                } */
                 return NavigationDecision.navigate;
               },
             );
           case AuthenticationStatus.authenticated:
             return Column(
               children: [
-                Center(
-                  child: Text('YAAAASSSS ${authRepository.accessToken}'),
+                const Center(
+                  child: Text('YAAAASSSS'), //${authRepository.accessToken}'),
                 ),
                 ElevatedButton(
                     onPressed: () => pageCubit.updateFlow('/'),

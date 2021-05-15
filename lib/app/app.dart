@@ -5,7 +5,7 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
-import 'package:authentication_repository/authentication_repository.dart';
+import 'package:mal_auth_repository/mal_auth_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -24,11 +24,7 @@ class App extends StatelessWidget {
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider<AuthenticationRepository>(
-          create: (_) => AuthenticationRepository(
-              authorizationEndpoint: authorizationEndpoint,
-              tokenEndpoint: tokenEndpoint,
-              redirectUrl: redirectUrl,
-              credentialsFile: credentialsFile),
+          create: (_) => AuthenticationRepository(),
         ),
         RepositoryProvider<UserRepository>(create: (_) => UserRepository()),
       ],

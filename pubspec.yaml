@@ -11,8 +11,8 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  authentication_repository:
-    path: ./packages/authentication_repository
+  mal_auth_repository:
+    path: ./packages/mal_auth_repository
   user_repository:
     path: ./packages/user_repository
   bloc: ^7.0.0

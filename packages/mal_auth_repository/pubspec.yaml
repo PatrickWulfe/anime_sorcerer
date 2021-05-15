@@ -1,4 +1,4 @@
-name: authentication_repository
+name: mal_auth_repository
 description: A simple auth package for MAL's oauth2
 version: 1.0.0
 publish_to: none
@@ -16,6 +16,7 @@ dependencies:
   flutter_bloc: ^7.0.0
   http: ^0.13.3
   oauth2: ^2.0.0
+  oauth2_client: ^2.1.0
 
 dev_dependencies:
   flutter_test:
