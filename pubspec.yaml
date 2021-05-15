@@ -11,10 +11,8 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  mal_auth_repository:
-    path: ./packages/mal_auth_repository
-  user_repository:
-    path: ./packages/user_repository
+  myanimelist_repository:
+    path: ./packages/myanimelist_repository
   bloc: ^7.0.0
   crypto: ^3.0.1
   equatable: ^2.0.0

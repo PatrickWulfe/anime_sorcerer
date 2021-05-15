@@ -1,8 +1,7 @@
 import 'package:anime_sorcerer/app/app.dart';
-import 'package:mal_auth_repository/mal_auth_repository.dart';
+import 'package:myanimelist_repository/myanimelist_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:user_repository/user_repository.dart';
 import '../../login/login.dart';
 
 class LoginPage extends StatelessWidget {
@@ -18,7 +17,7 @@ class LoginPage extends StatelessWidget {
           return LoginBloc(
               authenticationRepository:
                   RepositoryProvider.of<MALAuthRepository>(context),
-              userRepository: RepositoryProvider.of<UserRepository>(context));
+              //userRepository: RepositoryProvider.of<UserRepository>(context));
         }),
       ],
       child: const LoginView(),

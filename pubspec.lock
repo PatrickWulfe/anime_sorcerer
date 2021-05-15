@@ -231,13 +231,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
-  mal_auth_repository:
-    dependency: "direct main"
-    description:
-      path: "packages/mal_auth_repository"
-      relative: true
-    source: path
-    version: "1.0.0"
   matcher:
     dependency: transitive
     description:
@@ -266,6 +259,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.2"
+  myanimelist_repository:
+    dependency: "direct main"
+    description:
+      path: "packages/myanimelist_repository"
+      relative: true
+    source: path
+    version: "1.0.0"
   nested:
     dependency: transitive
     description:
@@ -474,20 +474,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.0"
-  user_repository:
-    dependency: "direct main"
-    description:
-      path: "packages/user_repository"
-      relative: true
-    source: path
-    version: "1.0.0"
-  uuid:
-    dependency: transitive
-    description:
-      name: uuid
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.4"
   vector_math:
     dependency: transitive
     description:
