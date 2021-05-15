@@ -5,6 +5,7 @@ import 'package:oauth2_client/oauth2_client.dart';
 import 'package:oauth2_client/oauth2_helper.dart';
 
 import '../mal_auth_repository.dart';
+import 'mal_oauth2_client.dart';
 
 enum AuthenticationStatus {
   unknown,
@@ -15,10 +16,12 @@ enum AuthenticationStatus {
 
 class MALAuthRepository {
   MALAuthRepository() {
+    _malOAuth2Client = MALOAuth2Client();
+    var authCodeParams = {'zero': 0, 'one': 1};
     _oAuth2Helper = OAuth2Helper(
-      _oAuth2Client,
-      grantType: OAuth2Helper.AUTHORIZATION_CODE,
+      _malOAuth2Client,
       clientId: '5c943b5a50e820deb39eb8f9d873e8b6',
+      authCodeParams: authCodeParams,
     );
 
     _initAccessToken();
@@ -26,13 +29,7 @@ class MALAuthRepository {
   }
 
   final _controller = StreamController<AuthenticationStatus>();
-  final _oAuth2Client = OAuth2Client(
-    authorizeUrl: 'https://myanimelist.net/v1/oauth2/authorize',
-    tokenUrl: 'https://myanimelist.net/v1/oauth2/token',
-    redirectUri: 'wulfep.animesorcerer://oauth2',
-    customUriScheme: 'wulfep.animesorcerer',
-    //credentialsLocation: CredentialsLocation.BODY,
-  );
+  late final MALOAuth2Client _malOAuth2Client;
   late final OAuth2Helper _oAuth2Helper;
   AccessTokenResponse? _accessToken;
 
@@ -43,8 +40,9 @@ class MALAuthRepository {
   }
 
   Future<void> _initAccessToken() async {
-    _accessToken = await _oAuth2Client.getTokenWithAuthCodeFlow(
+    _accessToken = await _malOAuth2Client.getTokenWithAuthCodeFlow(
       clientId: '5c943b5a50e820deb39eb8f9d873e8b6',
     );
+    print(_accessToken!.accessToken);
   }
 }
