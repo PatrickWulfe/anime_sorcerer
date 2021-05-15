@@ -1,5 +1,5 @@
-name: mal_auth_repository
-description: A simple auth package for MAL's oauth2
+name: myanimelist_repository
+description: A repository for communicating with MyAnimeList's API
 version: 1.0.0
 publish_to: none
 
@@ -15,12 +15,6 @@ dependencies:
   equatable: ^2.0.0
   flutter_bloc: ^7.0.0
   http: ^0.13.3
-<<<<<<< HEAD:packages/mal_auth_repository/pubspec.yaml
-  oauth2: ^2.0.0
-  oauth2_client: ^2.1.0
-=======
-  url_launcher: ^6.0.3
->>>>>>> c9458bcf256a1e204fc5b0db242026914643e8b0:packages/authentication_repository/pubspec.yaml
 
 dev_dependencies:
   flutter_test:
