@@ -1,4 +1,4 @@
-import 'package:anime_sorcerer/app/page_flow/page_flow.dart';
+import 'package:anime_sorcerer/app/app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,12 +18,17 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: ElevatedButton(
-        onPressed: () {
-          BlocProvider.of<PageFlowCubit>(context).updateFlow('/login');
-        },
-        child: const Text('Go to Login Page'),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('title'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            BlocProvider.of<PageFlowCubit>(context).updateFlow('/login');
+          },
+          child: const Text('Go to Login Page'),
+        ),
       ),
     );
   }

@@ -5,15 +5,16 @@ import 'package:http/http.dart' as http;
 import 'package:oauth2_client/access_token_response.dart';
 import 'package:oauth2_client/oauth2_client.dart';
 
-import '../myanimelist_api_client.dart';
+import '../myanimelist_repository.dart';
 
 class MALOAuth2Client extends OAuth2Client {
   MALOAuth2Client()
       : super(
-            authorizeUrl: 'https://myanimelist.net/v1/oauth2/authorize',
-            tokenUrl: 'https://myanimelist.net/v1/oauth2/token',
-            redirectUri: 'wulfep.animesorcerer://oauth2',
-            customUriScheme: 'wulfep.animesorcerer') {
+          authorizeUrl: 'https://myanimelist.net/v1/oauth2/authorize',
+          tokenUrl: 'https://myanimelist.net/v1/oauth2/token',
+          redirectUri: 'wulfep.animesorcerer://oauth2',
+          customUriScheme: 'wulfep.animesorcerer',
+        ) {
     _codeChallenge = _getRandomString(128);
   }
 

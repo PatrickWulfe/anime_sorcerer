@@ -1,5 +1,5 @@
-name: myanimelist_api_client
-description: A client for communicating with MyAnimeList's API
+name: myanimelist_repository
+description: A repository for interacting with the MyAnimeList API package
 version: 1.0.0
 publish_to: none
 
@@ -11,6 +11,8 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  myanimelist_api:
+    path: ../myanimelist_api
   build_runner: ^2.0.3
   equatable: ^2.0.0
   json_annotation: ^4.0.1
@@ -18,9 +20,9 @@ dependencies:
 
 dev_dependencies:
   coverage: ^1.0.2
+  flutter_test_ui: ^1.0.0
   json_serializable: ^4.1.2
   mocktail: ^0.1.0
-  test: ^1.17.4
   very_good_analysis: ^2.0.0
 
 flutter:

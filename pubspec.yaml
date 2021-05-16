@@ -11,14 +11,14 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  myanimelist_repository:
-    path: ./packages/myanimelist_repository
   bloc: ^7.0.0
   crypto: ^3.0.1
   equatable: ^2.0.0
   flow_builder: ^0.0.2
   flutter_bloc: ^7.0.0
   intl: ^0.17.0
+  myanimelist_repository:
+    path: ./packages/myanimelist_repository
   uni_links: ^0.5.1
 
 dev_dependencies:

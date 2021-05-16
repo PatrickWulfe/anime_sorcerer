@@ -9,8 +9,29 @@ abstract class AnimeListState extends Equatable {
 
 class AnimeListInitial extends AnimeListState {}
 
-class AnimeListPopulated extends AnimeListState {
-  const AnimeListPopulated({required this.animeList});
+class AnimeListPageLoading extends AnimeListState {
+  const AnimeListPageLoading({required this.page});
 
-  final List<AnimeListing> animeList;
+  final int page;
+
+  @override
+  List<Object> get props => [page];
+}
+
+class AnimeListPageLoaded extends AnimeListState {
+  const AnimeListPageLoaded({required this.animeList});
+
+  final List<mal_api.AnimeList> animeList;
+
+  @override
+  List<Object> get props => [animeList];
+}
+
+class AnimeListError extends AnimeListState {
+  const AnimeListError({required this.errString});
+
+  final String errString;
+
+  @override
+  List<Object> get props => [errString];
 }

@@ -1,10 +1,15 @@
+import 'package:anime_sorcerer/app/app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:myanimelist_api/myanimelist_api.dart' as mal_api;
+import 'package:myanimelist_repository/myanimelist_repository.dart';
 
 import '../anime_list.dart';
 
 class AnimeListPage extends StatelessWidget {
   const AnimeListPage({Key? key}) : super(key: key);
+
+  static Page page() => const MaterialPage<void>(child: AnimeListPage());
 
   @override
   Widget build(BuildContext context) {
@@ -17,22 +22,22 @@ class AnimeListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      gridDelegate:
-          const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-      itemBuilder: _buildListItem,
-    );
-  }
-
-  Widget _buildListItem(context, index) {
-    var listItem =
-        (BlocProvider.of<AnimeListBloc>(context).state as AnimeListPopulated)
-            .animeList[index];
-    return Card(
-      child: GridTile(
-        child: Column(
-          children: [Image.network(listItem.imgUrl), Text(listItem.name)],
-        ),
+    var _myAnimeListRepository =
+        RepositoryProvider.of<MyAnimeListRepository>(context);
+    return BlocProvider<AnimeListBloc>(
+      create: (context) =>
+          AnimeListBloc(myAnimeListRepository: _myAnimeListRepository),
+      child: BlocBuilder<AnimeListBloc, AnimeListState>(
+        builder: (context, state) {
+          return Scaffold(
+            appBar: AppBar(
+              title: const Text('Anime List'),
+            ),
+            drawer: const FlowNavdrawer(),
+            body: const AnimeListWidget(),
+          );
+        },
+        buildWhen: (previous, current) => previous != current,
       ),
     );
   }

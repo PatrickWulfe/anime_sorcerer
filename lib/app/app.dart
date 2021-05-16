@@ -5,28 +5,25 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
-import 'package:mal_auth_repository/mal_auth_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:user_repository/user_repository.dart';
+import 'package:myanimelist_repository/myanimelist_repository.dart';
 import 'app.dart';
 
 export '../l10n/l10n.dart';
-export '../login/login.dart';
-export 'page_flow/page_flow.dart';
+export '../page_flow/page_flow.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var _myAnimeListRepository = MyAnimeListRepository();
     return MultiRepositoryProvider(
       providers: [
-        RepositoryProvider<MALAuthRepository>(
-          create: (_) => MALAuthRepository(),
-        ),
-        RepositoryProvider<UserRepository>(create: (_) => UserRepository()),
+        RepositoryProvider.value(value: _myAnimeListRepository),
+        //RepositoryProvider<UserRepository>(create: (_) => UserRepository()),
       ],
       child: MaterialApp(
         theme: ThemeData(
@@ -38,7 +35,9 @@ class App extends StatelessWidget {
           GlobalMaterialLocalizations.delegate,
         ],
         supportedLocales: AppLocalizations.supportedLocales,
-        home: PageFlow(),
+        home: PageFlow(
+          myAnimeListRepository: _myAnimeListRepository,
+        ),
       ),
     );
   }
