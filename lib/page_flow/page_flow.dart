@@ -18,6 +18,7 @@ List<Page> onGenerateAppPages(String page, List<Page> pages) {
     case '/animelist':
       return [AnimeListPage.page()];
     case '/':
+      b
       return [HomePage.page()];
     default:
       return [const MaterialPage(child: Text('oops'))];

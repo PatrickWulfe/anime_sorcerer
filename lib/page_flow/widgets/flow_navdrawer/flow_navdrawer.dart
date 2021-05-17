@@ -21,10 +21,6 @@ class FlowNavdrawer extends StatelessWidget {
             padding: EdgeInsets.zero,
             children: [
               DrawerHeader(
-                  child: BlocProvider<FlowNavdrawerHeaderCubit>(
-                create: (context) => FlowNavdrawerHeaderCubit(
-                    myAnimeListRepository: _myAnimeListRepository)
-                  ..updateUser(),
                 child: const FlowNavdrawerHeader(),
               ))
             ],

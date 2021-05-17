@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:math';
 
 import 'package:myanimelist_api/myanimelist_api.dart' as mal_api;
 import 'package:oauth2_client/access_token_response.dart';
@@ -41,12 +39,10 @@ class MyAnimeListRepository {
     yield* _controller.stream;
   }
 
-  mal_api.Client get apiClient {
-    _apiClient ??= mal_api.Client(_accessToken!.accessToken);
-    return _apiClient!;
+  Future<User> get currentUser async {
+    var userData = await _apiClient!.getUserInfo();
+    return User(id: userData.id!, name: userData.name!);
   }
-
-  OAuth2Helper get oAuth2Helper => _oAuth2Helper;
 
   Future<void> _initAccessToken() async {
     _accessToken ??= await _oAuth2Helper.getTokenFromStorage();
