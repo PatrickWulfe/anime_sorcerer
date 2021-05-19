@@ -1,39 +1,55 @@
-import 'dart:async';
-
+import 'package:firebase_auth_repository/firebase_auth_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:myanimelist_api/myanimelist_api.dart' as mal_api;
-import 'package:myanimelist_repository/myanimelist_repository.dart';
-
-import '../login.dart';
+import 'package:form_inputs/form_imputs.dart';
+import 'package:formz/formz.dart';
 
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit({required this.myAnimeListRepository}) : super(LoginInitial()) {
-    _malAuthenticationSubscription =
-        myAnimeListRepository.authenticationStatus.listen((status) {
-      switch (status) {
-        case MALAuthenticationStatus.authenticated:
-          userLoggedIn();
-          break;
-        case MALAuthenticationStatus.unauthenticated:
-          userLoggedOut();
-          break;
-        default:
-          break;
-      }
-    });
+  LoginCubit(this._firebaseAuthRepository) : super(const LoginState());
+
+  final FirebaseAuthRepository _firebaseAuthRepository;
+
+  void emailChanged(String value) {
+    final email = Email.dirty(value);
+    emit(state.copyWith(
+      email: email,
+      status: Formz.validate([email, state.password]),
+    ));
   }
 
-  final MyAnimeListRepository myAnimeListRepository;
-  late StreamSubscription<MALAuthenticationStatus>
-      _malAuthenticationSubscription;
+  void passwordChanged(String value) {
+    final password = Password.dirty(value);
+    emit(state.copyWith(
+      password: password,
+      status: Formz.validate([state.email, password]),
+    ));
+  }
 
-  void userLoggedIn() async =>
-      emit(LoggedIn(user: await myAnimeListRepository.apiClient.getUserInfo()));
+  Future<void> logInWithCredentials() async {
+    if (!state.status.isValidated) return;
+    emit(state.copyWith(status: FormzStatus.submissionInProgress));
+    try {
+      await _firebaseAuthRepository.logInWithEmailAndPassword(
+        email: state.email.value,
+        password: state.password.value,
+      );
+      emit(state.copyWith(status: FormzStatus.submissionSuccess));
+    } on Exception {
+      emit(state.copyWith(status: FormzStatus.submissionFailure));
+    }
+  }
 
-  void userLoginRequested() => myAnimeListRepository.oAuth2Helper.getToken();
-
-  void userLoggedOut() => emit(LoggedOut());
+  Future<void> logInWithGoogle() async {
+    emit(state.copyWith(status: FormzStatus.submissionInProgress));
+    try {
+      await _firebaseAuthRepository.logInWithGoogle();
+      emit(state.copyWith(status: FormzStatus.submissionSuccess));
+    } on Exception {
+      emit(state.copyWith(status: FormzStatus.submissionFailure));
+    } on NoSuchMethodError {
+      emit(state.copyWith(status: FormzStatus.pure));
+    }
+  }
 }

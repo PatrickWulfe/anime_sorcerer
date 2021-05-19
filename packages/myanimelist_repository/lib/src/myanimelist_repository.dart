@@ -13,11 +13,11 @@ enum MALAuthenticationStatus {
 }
 
 class MyAnimeListRepository {
-  MyAnimeListRepository() {
+  MyAnimeListRepository({required String clientId}) {
     _malOAuth2Client = MALOAuth2Client();
     _oAuth2Helper = OAuth2Helper(
       _malOAuth2Client,
-      clientId: hiddenClientId,
+      clientId: clientId,
     );
 
     _initAccessToken();

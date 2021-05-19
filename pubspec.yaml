@@ -1,4 +1,4 @@
-name: anime_sorcerer
+name: mumen_finder
 description: A new Flutter project.
 version: 1.0.0+1
 publish_to: none
@@ -11,15 +11,22 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  cache:
+    path: ./packages/cache
+  firebase_auth_repository:
+    path: ./packages/firebase_auth_repository
+  form_inputs:
+    path: packages/form_inputs
   bloc: ^7.0.0
-  crypto: ^3.0.1
   equatable: ^2.0.0
+  firebase_core: ^1.2.0
   flow_builder: ^0.0.2
   flutter_bloc: ^7.0.0
+  flutter_dotenv: ^4.0.0-nullsafety.0
+  font_awesome_flutter: ^9.0.0
+  formz: ^0.4.0
+  google_fonts: ^2.1.0
   intl: ^0.17.0
-  myanimelist_repository:
-    path: ./packages/myanimelist_repository
-  uni_links: ^0.5.1
 
 dev_dependencies:
   flutter_test:
@@ -31,3 +38,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true
+
+assets:
+  - /assets
+  - .env

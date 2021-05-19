@@ -1,6 +1,7 @@
-import 'package:anime_sorcerer/app/app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mumen_finder/app/app.dart';
+import 'package:mumen_finder/home/home.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -9,25 +10,30 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const HomeView();
-  }
-}
-
-class HomeView extends StatelessWidget {
-  const HomeView({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final user = context.select((AppBloc bloc) => bloc.state.user);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('title'),
+        title: const Text('Home'),
+        actions: <Widget>[
+          IconButton(
+            key: const Key('homePage_logout_iconButton'),
+            icon: const Icon(Icons.exit_to_app),
+            onPressed: () => context.read<AppBloc>().add(AppLogoutRequested()),
+          )
+        ],
       ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            BlocProvider.of<PageFlowCubit>(context).updateFlow('/login');
-          },
-          child: const Text('Go to Login Page'),
+      body: Align(
+        alignment: const Alignment(0, -1 / 3),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Avatar(photo: user.photo),
+            const SizedBox(height: 4.0),
+            Text(user.email ?? '', style: textTheme.headline6),
+            const SizedBox(height: 4.0),
+            Text(user.name ?? '', style: textTheme.headline5),
+          ],
         ),
       ),
     );

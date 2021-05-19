@@ -1,6 +1,6 @@
 {
-    "name": "anime_sorcerer",
-    "short_name": "anime_sorcerer",
+    "name": "Mumen Finder",
+    "short_name": "Mumen Finder",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

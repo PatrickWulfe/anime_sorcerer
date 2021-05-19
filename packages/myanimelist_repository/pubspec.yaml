@@ -12,7 +12,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   myanimelist_api:
-    path: ../myanimelist_api
+    path: ../../../../packages/MyAnimeList-API
   build_runner: ^2.0.3
   equatable: ^2.0.0
   json_annotation: ^4.0.1

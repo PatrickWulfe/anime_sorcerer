@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "927514031895",
+    "project_id": "mumen-find",
+    "storage_bucket": "mumen-find.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:927514031895:android:82636e01bd2357c8fd6952",
+        "android_client_info": {
+          "package_name": "wulfep.mumenfinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "927514031895-ddv4nfuhmtnbttrged42een4drj59q8e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDghFNo6AOauCMBQyrhCwpcF4trkfWRu78"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "927514031895-ddv4nfuhmtnbttrged42een4drj59q8e.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "927514031895-jdr54tvsrsb39lu3o46cuug1dha300rf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "wulfep.mumenfinder"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:927514031895:android:bbfafbae433e5b2cfd6952",
+        "android_client_info": {
+          "package_name": "wulfep.mumenfinder.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "927514031895-ddv4nfuhmtnbttrged42een4drj59q8e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDghFNo6AOauCMBQyrhCwpcF4trkfWRu78"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "927514031895-ddv4nfuhmtnbttrged42een4drj59q8e.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "927514031895-jdr54tvsrsb39lu3o46cuug1dha300rf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "wulfep.mumenfinder"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

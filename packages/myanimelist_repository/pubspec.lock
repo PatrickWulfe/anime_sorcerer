@@ -348,7 +348,7 @@ packages:
   myanimelist_api:
     dependency: "direct main"
     description:
-      path: "../myanimelist_api"
+      path: "../../../../packages/MyAnimeList-API"
       relative: true
     source: path
     version: "0.3.0"
