@@ -1,4 +1,3 @@
-import 'package:myanimelist_api/myanimelist_api.dart' as mal_api;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../anime_list.dart';
@@ -43,8 +42,8 @@ class AnimeListWidget extends StatelessWidget {
           child: Column(
             children: [
               Expanded(
-                  child: Image.network(listItem.node!.mainPicture!.medium!)),
-              Text(listItem.node!.title!)
+                  child: Image.network(listItem.node?.mainPicture?.medium!)),
+              Text(listItem.node?.title!)
             ],
           ),
         ),

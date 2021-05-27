@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:myanimelist_repository/myanimelist_repository.dart';
-import 'package:myanimelist_api/myanimelist_api.dart' as mal_api;
 import '../anime_list.dart';
 
 part 'anime_list_event.dart';
@@ -21,7 +20,7 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
   ) async* {
     if (event is PageLoadRequested) {
       yield AnimeListPageLoading(page: event.page);
-      var animeList = await myAnimeListRepository.apiClient.getAnimeList();
+      var animeList = await myAnimeListRepository.getAnimeListings();
       if (animeList.isNotEmpty) {
         add(PageLoadSuccess(animeList: animeList));
       }

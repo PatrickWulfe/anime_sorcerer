@@ -13,18 +13,18 @@ dependencies:
     sdk: flutter
   myanimelist_api:
     path: ../../../../packages/MyAnimeList-API
-  build_runner: ^2.0.3
   equatable: ^2.0.0
-  json_annotation: ^4.0.1
-  oauth2_client: ^2.1.0
+  oauth2: ^2.0.0
 
 dev_dependencies:
-  coverage: ^1.0.2
-  flutter_test_ui: ^1.0.0
-  json_serializable: ^4.1.2
+  flutter_test:
+    sdk: flutter
+  flutter_dotenv: ^4.0.0-nullsafety.1
   mocktail: ^0.1.0
   very_good_analysis: ^2.0.0
 
 flutter:
   uses-material-design: true
   generate: true
+  assets:
+  - .env

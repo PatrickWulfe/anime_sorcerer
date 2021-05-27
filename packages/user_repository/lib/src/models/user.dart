@@ -14,16 +14,25 @@ class User extends Equatable {
     this.photo,
   });
 
+  /// The current user's email address
   final String? email;
-  final int id;
+
+  /// The current user's id.
+  final String id;
+
+  /// The current user's name (display name)
   final String? name;
+
+  /// Url for the current user's photo.
   final String? photo;
 
-  /// Represents a non-logged in user
-  static const empty = User(id: -1);
+  /// Empty user which represents an unauthenticated user.
+  static const empty = User(id: '');
 
-  /// Convenience getters to determine whether the current user is empty.
+  /// Convenience getter to determine whether the current user is empty.
   bool get isEmpty => this == User.empty;
+
+  /// Convenience getter to determine whether the current user is not empty.
   bool get isNotEmpty => this != User.empty;
 
   @override
