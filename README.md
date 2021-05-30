@@ -1,5 +1,17 @@
 # Mumen Finder
 
+
+## Description:
+An app that is makes it easy to find which streaming services are hosting various anime.
+
+### Goals:
+- Have accounts through firebase and linked with MyAnimeList
+- Have multiple ways to filter and search
+- Create some kind of community database to add crowdsource what can't be found with current APIs
+
+
+<!-- 
+
 [![Very Good Ventures][logo]][very_good_ventures_link]
 
 Developed with 💙 by [Very Good Ventures][very_good_ventures_link] 🦄
@@ -168,3 +180,4 @@ Update the `CFBundleLocalizations` array in the `Info.plist` at `ios/Runner/Info
 [very_good_analysis_link]: https://pub.dev/packages/very_good_analysis
 [very_good_cli_link]: https://github.com/VeryGoodOpenSource/very_good_cli
 [very_good_ventures_link]: https://verygood.ventures/?utm_source=github&utm_medium=banner&utm_campaign=core
+ -->
